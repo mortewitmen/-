@@ -1,68 +1,159 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
-body{margin:0;background:linear-gradient(#0b1020 0,#182235 40%,#0b1020 100%);overflow:hidden;height:100vh;font-family:sans-serif}
-.w{position:absolute;inset:0;overflow:hidden}
-.g{position:absolute;bottom:0;left:0;width:200%;height:120px;background:linear-gradient(#1b2a1b,#0b160b);transform:translateX(0);animation:gr 20s linear infinite}
-.h1,.h2{position:absolute;bottom:80px;width:260px;height:120px;background:radial-gradient(circle at 50% 100%,#223322 0,#111822 70%,transparent 72%);opacity:.5}
-.h1{left:10%}
-.h2{right:5%}
-.s{position:absolute;bottom:70px;left:50%;transform:translateX(-50%);width:220px;height:26px;background:rgba(0,0,0,.55);border-radius:50%;filter:blur(10px)}
-.m{position:absolute;bottom:110px;width:160px;height:170px;border-radius:50%;box-shadow:0 0 40px rgba(0,0,0,.6);transition:left .25s ease-out,transform .15s ease-out,filter .2s}
-.m1{left:35%;background:radial-gradient(circle at 40% 30%,#4fff4f,#2ea82e)}
-.m2{left:65%;background:radial-gradient(circle at 40% 30%,#4fe0ff,#2e7ea8)}
-.mb{animation:br 3s ease-in-out infinite}
-.h{position:absolute;top:-22px;width:40px;height:40px;background:#d6d6d6;border-radius:50% 50% 0 0;transform:rotate(18deg)}
-.h.r{right:22px;transform:rotate(-18deg)}
-.h.l{left:22px}
-.e{position:absolute;top:42px;left:50%;transform:translateX(-50%);width:72px;height:72px;background:#fff;border-radius:50%;overflow:hidden;animation:bl 5s infinite}
-.p{position:absolute;top:24px;left:28px;width:22px;height:22px;background:#000;border-radius:50%;transition:transform .15s}
-.mo{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);width:76px;height:32px;background:#111;border-radius:0 0 50px 50px;transition:.15s}
-.a{position:absolute;top:78px;width:26px;height:72px;border-radius:20px;animation:wv 2s ease-in-out infinite}
-.a.l{left:-22px}
-.a.r{right:-22px;animation-delay:1s}
-.m1 .a{background:#2ea82e}
-.m2 .a{background:#2e7ea8}
-.ls{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);display:flex;gap:26px}
-.l{width:26px;height:64px;border-radius:20px;animation:wl .35s infinite alternate ease-in-out}
-.m1 .l{background:#1f7f1f}
-.m2 .l{background:#1f4f7f}
-.lr{animation-delay:.17s}
-.st{position:absolute;top:40px;left:50%;transform:translateX(-50%);color:#9ca3af;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
-@keyframes wl{0%{transform:translateY(0)}100%{transform:translateY(12px)}}
-@keyframes wv{0%,100%{transform:rotate(0)}50%{transform:rotate(18deg)}}
-@keyframes bl{0%,92%,100%{height:72px}95%{height:8px}}
-@keyframes br{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.03)}}
-@keyframes gr{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-</style></head><body>
-<div class="w">
-  <div class="h1"></div><div class="h2"></div>
-  <div class="g"></div>
-  <div class="s"></div>
-  <div class="st">tap, move, click</div>
-  <div class="m m1 mb">
-    <div class="h l"></div><div class="h r"></div>
-    <div class="e"><div class="p"></div></div>
-    <div class="mo"></div>
-    <div class="a l"></div><div class="a r"></div>
-    <div class="ls"><div class="l ll"></div><div class="l lr"></div></div>
-  </div>
-  <div class="m m2 mb">
-    <div class="h l"></div><div class="h r"></div>
-    <div class="e"><div class="p"></div></div>
-    <div class="mo"></div>
-    <div class="a l"></div><div class="a r"></div>
-    <div class="ls"><div class="l ll"></div><div class="l lr"></div></div>
-  </div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#020617;font-family:sans-serif}
+#w{position:relative;width:100vw;height:100vh;overflow:hidden}
+.bg{position:absolute;inset:0;background:radial-gradient(circle at 20% 0,#1f2937 0,transparent 55%),radial-gradient(circle at 80% 0,#0f172a 0,transparent 60%),linear-gradient(#020617 0,#020617 45%,#020617 100%)}
+.stars{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#e5e7eb;opacity:.4}
+.ground{position:absolute;left:-10%;right:-10%;bottom:-40px;height:220px;background:radial-gradient(circle at 50% -40px,#16a34a 0,#166534 40%,#052e16 70%,#020617 100%)}
+.hill{position:absolute;bottom:120px;width:260px;height:120px;background:radial-gradient(circle at 50% 100%,#1e293b 0,#020617 70%,transparent 72%);opacity:.6}
+.h1{left:5%}
+.h2{right:0}
+.h3{left:55%;bottom:150px;opacity:.4}
+.shadow{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);width:260px;height:30px;background:rgba(0,0,0,.7);border-radius:50%;filter:blur(12px)}
+.plant{position:absolute;width:14px;height:40px;background:#166534;border-radius:999px 999px 0 0}
+.plant::after{content:"";position:absolute;bottom:26px;left:-10px;width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 20%,#22c55e,#15803d)}
+.spark{position:absolute;width:6px;height:6px;border-radius:50%;background:#facc15;box-shadow:0 0 12px #facc15;opacity:.8;pointer-events:none}
+.creature{position:absolute;width:60px;height:60px;border-radius:50%;box-shadow:0 0 20px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;transition:filter .2s}
+.face{position:relative;width:70%;height:70%;border-radius:50%;background:#f9fafb;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.eye{position:absolute;width:12px;height:12px;border-radius:50%;background:#000}
+.eye.l{left:18%}
+.eye.r{right:18%}
+.mouth{position:absolute;bottom:14%;left:50%;transform:translateX(-50%);width:40%;height:16%;border-radius:0 0 999px 999px;background:#111}
+.horn{position:absolute;width:14px;height:18px;background:#e5e7eb;border-radius:999px 999px 0 0;top:-4px}
+.horn.l{left:14px;transform:rotate(-12deg)}
+.horn.r{right:14px;transform:rotate(12deg)}
+.ring{position:absolute;border-radius:999px;border:3px solid #38bdf8;inset:4px;opacity:.7}
+.orb{position:absolute;width:10px;height:10px;border-radius:50%;background:#a855f7;box-shadow:0 0 10px #a855f7}
+.trail{position:absolute;width:4px;height:14px;border-radius:999px;background:#38bdf8;opacity:0;pointer-events:none}
+.robot-eye{position:absolute;width:60%;height:40%;border-radius:999px;background:#020617;top:24%;left:20%;display:flex;align-items:center;justify-content:center}
+.robot-dot{width:10px;height:10px;border-radius:50%;background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.panel{position:absolute;width:40%;height:18%;border-radius:4px;background:#111827;bottom:12%;left:30%}
+.leaf{position:absolute;width:10px;height:20px;border-radius:999px;background:#22c55e;transform-origin:bottom center}
+@keyframes blink{0%,92%,100%{height:12px}95%{height:2px}}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+@keyframes grow{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes drip{0%{transform:translateY(0);opacity:1}100%{transform:translateY(40px);opacity:0}}
+</style>
+</head>
+<body>
+<div id="w">
+  <div class="bg"></div>
+  <div class="stars"></div>
+  <div class="ground"></div>
+  <div class="hill h1"></div><div class="hill h2"></div><div class="hill h3"></div>
+  <div class="shadow"></div>
 </div>
 <script>
-const ms=[...document.querySelectorAll(".m")],ps=[...document.querySelectorAll(".p")],mos=[...document.querySelectorAll(".mo")];let st=0,tm=0;
-function mv(e){let x=e.clientX||e.touches?.[0]?.clientX;if(!x)return;let r=x/window.innerWidth-.5,o=r*40;ms.forEach((m,i)=>{let off=(i?0.15:-0.15)*window.innerWidth;m.style.left=x+off+"px";ps[i].style.transform=`translate(${o}px,0)`})}
-function ex(n){mos.forEach((m,i)=>{if(n===0){m.style.borderRadius="0 0 50px 50px";m.style.height="32px"}else if(n===1){m.style.borderRadius="0 0 50px 50px";m.style.height="40px"}else if(n===2){m.style.borderRadius="50px 50px 0 0";m.style.height="14px"}else if(n===3){m.style.borderRadius="50px 50px 50px 50px";m.style.height="26px"}})}
-function jp(){ms.forEach((m,i)=>{m.style.transform="translateX(-50%) translateY(-28px)";m.style.filter="brightness(1.2)";setTimeout(()=>{m.style.transform="translateX(-50%)";m.style.filter="brightness(1)";},220)})}
-function cy(){st=(st+1)%4;ex(st);jp()}
-function clk(){let n=Date.now();if(n-tm<300){cy()}else{jp()}tm=n}
-window.addEventListener("mousemove",mv,{passive:true});
-window.addEventListener("touchmove",mv,{passive:true});
-window.addEventListener("click",clk);
-window.addEventListener("touchstart",clk,{passive:true});
+const W=document.getElementById("w");
+const stars=document.querySelector(".stars");
+const groundY=window.innerHeight-140;
+const creatures=[];
+const plants=[];
+let audioCtx=null;
+function initAudio(){if(audioCtx)return;try{audioCtx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){audioCtx=null}}
+function tone(f,d,v){if(!audioCtx)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type="sine";o.frequency.value=f;g.gain.value=v;o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+d)}
+function r(a,b){return a+Math.random()*(b-a)}
+function c(a){return a[Math.floor(Math.random()*a.length)]}
+function makeStars(){for(let i=0;i<80;i++){const s=document.createElement("div");s.className="star";s.style.left=r(0,100)+"%";s.style.top=r(0,45)+"%";s.style.animation=`twinkle ${r(3,7)}s ease-in-out infinite`;stars.appendChild(s)}}
+function makePlant(x){const p=document.createElement("div");p.className="plant";p.style.bottom="80px";p.style.left=x+"px";W.appendChild(p);plants.push({el:p})}
+function spawnPlants(){makePlant(window.innerWidth*0.15);makePlant(window.innerWidth*0.45);makePlant(window.innerWidth*0.8)}
+function makeCreature(){const t=c(["cute","monster","magic","robot","nature"]);const el=document.createElement("div");el.className="creature";let color;
+if(t==="cute")color="radial-gradient(circle at 30% 20%,#f97316,#ea580c)";
+if(t==="monster")color="radial-gradient(circle at 40% 30%,#4fff4f,#22c55e)";
+if(t==="magic")color="radial-gradient(circle at 40% 30%,#a855f7,#7c3aed)";
+if(t==="robot")color="radial-gradient(circle at 40% 30%,#38bdf8,#0ea5e9)";
+if(t==="nature")color="radial-gradient(circle at 40% 30%,#22c55e,#16a34a)";
+el.style.background=color;
+const face=document.createElement("div");face.className="face";
+if(t==="robot"){
+  const eye=document.createElement("div");eye.className="robot-eye";
+  const dot=document.createElement("div");dot.className="robot-dot";
+  eye.appendChild(dot);face.appendChild(eye);
+  const panel=document.createElement("div");panel.className="panel";face.appendChild(panel);
+}else{
+  const e1=document.createElement("div");e1.className="eye l";
+  const e2=document.createElement("div");e2.className="eye r";
+  const m=document.createElement("div");m.className="mouth";
+  e1.style.animation="blink 4s infinite";e2.style.animation="blink 4s infinite";
+  face.appendChild(e1);face.appendChild(e2);face.appendChild(m);
+  if(t==="monster"||t==="magic"){
+    const h1=document.createElement("div");h1.className="horn l";
+    const h2=document.createElement("div");h2.className="horn r";
+    face.appendChild(h1);face.appendChild(h2);
+  }
+  if(t==="magic"){
+    const ring=document.createElement("div");ring.className="ring";
+    const orb=document.createElement("div");orb.className="orb";
+    face.appendChild(ring);face.appendChild(orb);
+  }
+  if(t==="nature"){
+    const leaf1=document.createElement("div");leaf1.className="leaf";leaf1.style.left="10px";leaf1.style.bottom="40px";
+    const leaf2=document.createElement("div");leaf2.className="leaf";leaf2.style.right="10px";leaf2.style.bottom="40px";
+    leaf1.style.transform="rotate(-20deg)";leaf2.style.transform="rotate(20deg)";
+    face.appendChild(leaf1);face.appendChild(leaf2);
+  }
+}
+el.appendChild(face);
+W.appendChild(el);
+const x=r(40,window.innerWidth-40);
+const y=r(groundY-220,groundY-80);
+const vx=r(-40,40);
+const vy=r(-10,10);
+const g=t==="magic"||t==="robot"?40:80;
+const floaty=t==="magic";
+const flyer=t==="magic"||t==="robot";
+const waterer=t==="nature";
+const wander=c(["walk","hop","float"]);
+const obj={el,x,y,vx,vy,g,type:t,floaty,flyer,waterer,wander,timer:0,actionTimer:r(1,4),dir:Math.random()<.5?-1:1};
+creatures.push(obj);
+}
+function makeTrail(x,y,color){const tr=document.createElement("div");tr.className="trail";tr.style.left=x+"px";tr.style.top=y+"px";tr.style.background=color;tr.style.animation="drip .6s linear forwards";W.appendChild(tr);setTimeout(()=>tr.remove(),650)}
+function waterPlants(){plants.forEach(p=>{p.el.style.animation="grow 1.2s ease-in-out";setTimeout(()=>{p.el.style.animation=""},1300)})}
+function update(dt){creatures.forEach(c=>{c.timer+=dt;c.actionTimer-=dt;
+if(c.actionTimer<=0){
+  c.actionTimer=r(1.5,4.5);
+  const act=c(["jump","dash","hover","water","idle"]);
+  if(act==="jump"){c.vy=-r(120,180);tone(520,.08,.08)}
+  if(act==="dash"){c.vx+=c.dir*r(80,140);tone(260,.06,.06)}
+  if(act==="hover"&&c.flyer){c.vy=-r(40,80)}
+  if(act==="water"&&c.waterer){waterPlants();tone(340,.12,.06)}
+}
+c.vy+=c.g*dt;
+c.x+=c.vx*dt;
+c.y+=c.vy*dt;
+c.vx*=0.96;
+if(c.flyer&&Math.random()<0.01){c.vy-=r(40,80)}
+if(c.floaty){c.y+=Math.sin(c.timer*2)*6*dt}
+if(c.x<20){c.x=20;c.vx=Math.abs(c.vx);c.dir=1}
+if(c.x>window.innerWidth-20){c.x=window.innerWidth-20;c.vx=-Math.abs(c.vx);c.dir=-1}
+if(c.y>groundY){c.y=groundY;c.vy*=-0.4;if(Math.abs(c.vy)<20)c.vy=0}
+c.el.style.left=(c.x-30)+"px";
+c.el.style.top=(c.y-30)+"px";
+if(c.flyer&&Math.random()<0.05){makeTrail(c.x,c.y+20,c.type==="robot"?"#38bdf8":"#a855f7")}
+});
+}
+let last=performance.now();
+function loop(t){const dt=Math.min(0.05,(t-last)/1000);last=t;update(dt);requestAnimationFrame(loop)}
+function spawnLoop(){if(creatures.length<18&&Math.random()<0.7)makeCreature();setTimeout(spawnLoop,r(400,1200))}
+function randomSparks(){for(let i=0;i<4;i++){const s=document.createElement("div");s.className="spark";s.style.left=r(5,95)+"%";s.style.top=r(5,45)+"%";s.style.animation=`twinkle ${r(3,6)}s ease-in-out infinite`;W.appendChild(s)}}
+function rainMagic(){if(Math.random()<0.4){const x=r(40,window.innerWidth-40);const y=r(40,window.innerHeight*0.4);makeTrail(x,y,"#38bdf8");tone(880,.05,.04)}setTimeout(rainMagic,r(600,1400))}
+function onMove(e){const x=e.clientX||e.touches?.[0]?.clientX;if(!x)return;creatures.forEach(c=>{const d=(x/window.innerWidth-0.5)*40;c.vx+=d*0.2})}
+function onTap(){initAudio();creatures.forEach(c=>{c.vy-=r(80,140)});tone(660,.08,.08)}
+makeStars();
+spawnPlants();
+randomSparks();
+spawnLoop();
+rainMagic();
+requestAnimationFrame(loop);
+window.addEventListener("mousemove",onMove,{passive:true});
+window.addEventListener("touchmove",onMove,{passive:true});
+window.addEventListener("click",onTap,{passive:true});
+window.addEventListener("touchstart",onTap,{passive:true});
 </script>
-</body></html>
+</body>
+</html>
