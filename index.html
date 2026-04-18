@@ -1,36 +1,68 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>
-body{margin:0;background:#0d1117;overflow:hidden;height:100vh}
-.m{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);width:160px;height:160px;background:radial-gradient(circle at 40% 30%,#4fff4f,#2ea82e);border-radius:50%;box-shadow:0 0 40px rgba(0,255,0,.4);transition:left .25s ease-out,transform .15s ease-out;animation:b 3s ease-in-out infinite}
-.h{position:absolute;top:-20px;width:40px;height:40px;background:#d6d6d6;border-radius:50% 50% 0 0;transform:rotate(20deg)}
-.hr{right:20px;transform:rotate(-20deg)}
-.hl{left:20px}
-.e{position:absolute;top:40px;left:50%;transform:translateX(-50%);width:70px;height:70px;background:#fff;border-radius:50%;overflow:hidden;animation:bl 5s infinite}
-.p{position:absolute;top:22px;left:26px;width:22px;height:22px;background:#000;border-radius:50%;transition:transform .15s}
-.mo{position:absolute;bottom:35px;left:50%;transform:translateX(-50%);width:70px;height:30px;background:#111;border-radius:0 0 50px 50px;transition:.15s}
-.a{position:absolute;top:70px;width:26px;height:70px;background:#2ea82e;border-radius:20px;animation:w 2s ease-in-out infinite}
-.al{left:-20px}
-.ar{right:-20px;animation-delay:1s}
-.ls{position:absolute;bottom:-25px;left:50%;transform:translateX(-50%);display:flex;gap:25px}
-.l{width:26px;height:60px;background:#1f7f1f;border-radius:20px;animation:wa .35s infinite alternate ease-in-out}
+body{margin:0;background:linear-gradient(#0b1020 0,#182235 40%,#0b1020 100%);overflow:hidden;height:100vh;font-family:sans-serif}
+.w{position:absolute;inset:0;overflow:hidden}
+.g{position:absolute;bottom:0;left:0;width:200%;height:120px;background:linear-gradient(#1b2a1b,#0b160b);transform:translateX(0);animation:gr 20s linear infinite}
+.h1,.h2{position:absolute;bottom:80px;width:260px;height:120px;background:radial-gradient(circle at 50% 100%,#223322 0,#111822 70%,transparent 72%);opacity:.5}
+.h1{left:10%}
+.h2{right:5%}
+.s{position:absolute;bottom:70px;left:50%;transform:translateX(-50%);width:220px;height:26px;background:rgba(0,0,0,.55);border-radius:50%;filter:blur(10px)}
+.m{position:absolute;bottom:110px;width:160px;height:170px;border-radius:50%;box-shadow:0 0 40px rgba(0,0,0,.6);transition:left .25s ease-out,transform .15s ease-out,filter .2s}
+.m1{left:35%;background:radial-gradient(circle at 40% 30%,#4fff4f,#2ea82e)}
+.m2{left:65%;background:radial-gradient(circle at 40% 30%,#4fe0ff,#2e7ea8)}
+.mb{animation:br 3s ease-in-out infinite}
+.h{position:absolute;top:-22px;width:40px;height:40px;background:#d6d6d6;border-radius:50% 50% 0 0;transform:rotate(18deg)}
+.h.r{right:22px;transform:rotate(-18deg)}
+.h.l{left:22px}
+.e{position:absolute;top:42px;left:50%;transform:translateX(-50%);width:72px;height:72px;background:#fff;border-radius:50%;overflow:hidden;animation:bl 5s infinite}
+.p{position:absolute;top:24px;left:28px;width:22px;height:22px;background:#000;border-radius:50%;transition:transform .15s}
+.mo{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);width:76px;height:32px;background:#111;border-radius:0 0 50px 50px;transition:.15s}
+.a{position:absolute;top:78px;width:26px;height:72px;border-radius:20px;animation:wv 2s ease-in-out infinite}
+.a.l{left:-22px}
+.a.r{right:-22px;animation-delay:1s}
+.m1 .a{background:#2ea82e}
+.m2 .a{background:#2e7ea8}
+.ls{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);display:flex;gap:26px}
+.l{width:26px;height:64px;border-radius:20px;animation:wl .35s infinite alternate ease-in-out}
+.m1 .l{background:#1f7f1f}
+.m2 .l{background:#1f4f7f}
 .lr{animation-delay:.17s}
-.s{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);width:140px;height:20px;background:rgba(0,0,0,.4);border-radius:50%;filter:blur(8px)}
-@keyframes wa{0%{transform:translateY(0)}100%{transform:translateY(12px)}}
-@keyframes w{0%,100%{transform:rotate(0)}50%{transform:rotate(18deg)}}
-@keyframes bl{0%,92%,100%{height:70px}95%{height:8px}}
-@keyframes b{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.03)}}
+.st{position:absolute;top:40px;left:50%;transform:translateX(-50%);color:#9ca3af;font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+@keyframes wl{0%{transform:translateY(0)}100%{transform:translateY(12px)}}
+@keyframes wv{0%,100%{transform:rotate(0)}50%{transform:rotate(18deg)}}
+@keyframes bl{0%,92%,100%{height:72px}95%{height:8px}}
+@keyframes br{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.03)}}
+@keyframes gr{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 </style></head><body>
-<div class="m">
-<div class="h hl"></div><div class="h hr"></div>
-<div class="e"><div class="p"></div></div>
-<div class="mo"></div>
-<div class="a al"></div><div class="a ar"></div>
-<div class="ls"><div class="l ll"></div><div class="l lr"></div></div>
+<div class="w">
+  <div class="h1"></div><div class="h2"></div>
+  <div class="g"></div>
+  <div class="s"></div>
+  <div class="st">tap, move, click</div>
+  <div class="m m1 mb">
+    <div class="h l"></div><div class="h r"></div>
+    <div class="e"><div class="p"></div></div>
+    <div class="mo"></div>
+    <div class="a l"></div><div class="a r"></div>
+    <div class="ls"><div class="l ll"></div><div class="l lr"></div></div>
+  </div>
+  <div class="m m2 mb">
+    <div class="h l"></div><div class="h r"></div>
+    <div class="e"><div class="p"></div></div>
+    <div class="mo"></div>
+    <div class="a l"></div><div class="a r"></div>
+    <div class="ls"><div class="l ll"></div><div class="l lr"></div></div>
+  </div>
 </div>
-<div class="s"></div>
 <script>
-const m=document.querySelector(".m"),p=document.querySelector(".p"),mo=document.querySelector(".mo");
-function mv(e){let x=e.clientX||e.touches?.[0]?.clientX;if(!x)return;m.style.left=x+"px";let o=(x/window.innerWidth-.5)*40;p.style.transform=`translate(${o}px,0)`;}
-function tp(){m.style.transform="translateX(-50%) translateY(-25px)";mo.style.borderRadius="50px 50px 0 0";mo.style.height="10px";setTimeout(()=>{m.style.transform="translateX(-50%)";mo.style.borderRadius="0 0 50px 50px";mo.style.height="30px"},250);}
-window.addEventListener("mousemove",mv);window.addEventListener("touchmove",mv);window.addEventListener("click",tp);window.addEventListener("touchstart",tp);
+const ms=[...document.querySelectorAll(".m")],ps=[...document.querySelectorAll(".p")],mos=[...document.querySelectorAll(".mo")];let st=0,tm=0;
+function mv(e){let x=e.clientX||e.touches?.[0]?.clientX;if(!x)return;let r=x/window.innerWidth-.5,o=r*40;ms.forEach((m,i)=>{let off=(i?0.15:-0.15)*window.innerWidth;m.style.left=x+off+"px";ps[i].style.transform=`translate(${o}px,0)`})}
+function ex(n){mos.forEach((m,i)=>{if(n===0){m.style.borderRadius="0 0 50px 50px";m.style.height="32px"}else if(n===1){m.style.borderRadius="0 0 50px 50px";m.style.height="40px"}else if(n===2){m.style.borderRadius="50px 50px 0 0";m.style.height="14px"}else if(n===3){m.style.borderRadius="50px 50px 50px 50px";m.style.height="26px"}})}
+function jp(){ms.forEach((m,i)=>{m.style.transform="translateX(-50%) translateY(-28px)";m.style.filter="brightness(1.2)";setTimeout(()=>{m.style.transform="translateX(-50%)";m.style.filter="brightness(1)";},220)})}
+function cy(){st=(st+1)%4;ex(st);jp()}
+function clk(){let n=Date.now();if(n-tm<300){cy()}else{jp()}tm=n}
+window.addEventListener("mousemove",mv,{passive:true});
+window.addEventListener("touchmove",mv,{passive:true});
+window.addEventListener("click",clk);
+window.addEventListener("touchstart",clk,{passive:true});
 </script>
 </body></html>
