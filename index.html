@@ -1,35 +1,26 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>3D Endless World</title>
-<style>body{margin:0;overflow:hidden;background:#020205}canvas{display:block}</style>
-<script src="https://cloudflare.com"></script></head><body>
-<script>(function(){const _0x1=THREE;const _0x2=new _0x1.Scene();_0x2.background=new _0x1.Color(0x020205);
-const _0x3=new _0x1.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);_0x3.position.set(0,10,15);_0x3.lookAt(0,0,0);
-const _0x4=new _0x1.WebGLRenderer({antialias:true});_0x4.setSize(window.innerWidth,window.innerHeight);_0x4.shadowMap.enabled=true;document.body.appendChild(_0x4.domElement);
-_0x2.add(new _0x1.AmbientLight(0x404040,1.5));const _0x5=new _0x1.DirectionalLight(0xffffff,1.2);_0x5.position.set(10,20,10);_0x5.castShadow=true;_0x2.add(_0x5);
-const _0x6=new _0x1.GridHelper(200,50,0x00ffff,0x050508);_0x2.add(_0x6);
-const _0xG=new _0x1.Group();const _0x7=new _0x1.Mesh(new _0x1.BoxGeometry(1.2,1.5,0.8),new _0x1.MeshStandardMaterial({color:0x444444}));
-const _0xH=new _0x1.Mesh(new _0x1.BoxGeometry(0.8,0.6,0.6),new _0x1.MeshStandardMaterial({color:0x333333}));_0xH.position.y=1.1;
-const _0xV=new _0x1.Mesh(new _0x1.BoxGeometry(0.6,0.15,0.1),new _0x1.MeshStandardMaterial({color:0x00ffff,emissive:0x00ffff}));_0xV.position.set(0,1.1,0.3);
-const _0xAL=new _0x1.Mesh(new _0x1.BoxGeometry(0.2,0.8,0.2),new _0x1.MeshStandardMaterial({color:0x222222}));_0xAL.position.set(-0.7,0.3,0);
-const _0xAR=new _0x1.Mesh(new _0x1.BoxGeometry(0.2,0.8,0.2),new _0x1.MeshStandardMaterial({color:0x222222}));_0xAR.position.set(0.7,0.3,0);
-_0xG.add(_0x7,_0xH,_0xV,_0xAL,_0xAR);_0xG.position.set(0,0.75,0);_0xG.traverse(c=>c.castShadow=true);_0x2.add(_0xG);
-const _infObjs=[];const _geom=[new _0x1.OctahedronGeometry(0.5),new _0x1.TetrahedronGeometry(0.5),new _0x1.BoxGeometry(0.4,0.4,0.4)];
-function _spawn(){
-const _m=new _0x1.Mesh(_geom[Math.floor(Math.random()*_geom.length)],new _0x1.MeshStandardMaterial({color:Math.random()*0xffffff,emissive:0x111111}));
-_m.position.set((Math.random()-0.5)*100,Math.random()*20,(Math.random()-0.5)*100);
-_m.vRot=Math.random()*0.02;_0x2.add(_m);_infObjs.push(_m);
-}
-for(let i=0;i<100;i++)_spawn();
-function _anim(){
-requestAnimationFrame(_anim);
-const _t=Date.now()*0.001;
-_0xG.position.y=0.75+Math.sin(_t*2)*0.2;
-_0xAL.rotation.z=Math.sin(_t*3)*0.5;_0xAR.rotation.z=-Math.sin(_t*3)*0.5;
-_infObjs.forEach(o=>{
-o.rotation.y+=o.vRot;o.position.z+=0.1;
-if(o.position.z>50)o.position.z=-50;
-});
-_0x6.position.z=(_0x6.position.z+0.1)%4;
-_0x4.render(_0x2,_0x3);
-}
-window.addEventListener('resize',()=>{_0x3.aspect=window.innerWidth/window.innerHeight;_0x3.updateProjectionMatrix();_0x4.setSize(window.innerWidth,window.innerHeight)});
-_anim();})()</script></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><style>
+body,html{margin:0;padding:0;overflow:hidden;background:#000205}
+#u{position:fixed;top:20px;left:20px;color:#00ffff;background:rgba(0,10,20,0.6);backdrop-filter:blur(15px);padding:15px;border-radius:30px;z-index:100;font-family:monospace;border:1px solid #00ffff;pointer-events:none;text-transform:uppercase;letter-spacing:3px}
+</style><script src="https://cloudflare.com"></script></head><body>
+<div id="u"><span id="st">Deep Sync</span></div>
+<script>(function(){const _0x1=THREE;const _0x2=new _0x1.Scene();const _0x3=new _0x1.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+const _0x4=new _0x1.WebGLRenderer({antialias:true,alpha:true});_0x4.setSize(window.innerWidth,window.innerHeight);document.body.appendChild(_0x4.domElement);
+_0x2.fog=new _0x1.FogExp2(0x000205,0.04);const _0xL1=new _0x1.PointLight(0x00ffff,3,60);_0x2.add(_0xL1);
+const _0xM1=new _0x1.MeshPhysicalMaterial({color:0x00050a,transmission:1,thickness:2,roughness:0.1,metalness:0});const _0xFl=new _0x1.Mesh(new _0x1.SphereGeometry(100,32,32),_0xM1);_0xFl.material.side=_0x1.BackSide;_0x2.add(_0xFl);
+const _units=[];const _0x6=[{n:"S-1",p:"Chill",c:0x00ffff},{n:"S-2",p:"Pulse",c:0xff00ff},{n:"S-3",p:"Glow",c:0x00ff00}];
+function _0xA(){const p=_0x6[Math.floor(Math.random()*_0x6.length)];const g=new _0x1.Group();
+const bd=new _0x1.Mesh(new _0x1.IcosahedronGeometry(0.7,1),new _0x1.MeshStandardMaterial({color:0x222222,wireframe:true}));
+const cr=new _0x1.Mesh(new _0x1.SphereGeometry(0.3,16,16),new _0x1.MeshStandardMaterial({color:p.c,emissive:p.c,emissiveIntensity:2}));
+const arms=[];for(let i=0;i<4;i++){const a=new _0x1.Mesh(new _0x1.CylinderGeometry(0.05,0.1,1.5),new _0x1.MeshStandardMaterial({color:p.c,emissive:p.c}));
+a.position.set(Math.cos(i)*0.8,0,Math.sin(i)*0.8);a.rotation.z=Math.PI/4;g.add(a);arms.push(a)}
+g.add(bd,cr);g.position.set((Math.random()-0.5)*30,(Math.random()-0.5)*30,(Math.random()-0.5)*30);_0x2.add(g);
+_units.push({el:g,cr:cr,arms:arms,p:p,v:new _0x1.Vector3((Math.random()-0.5)*0.05,(Math.random()-0.5)*0.05,(Math.random()-0.5)*0.05),t:0})}
+for(let i=0;i<10;i++)_0xA();_0x3.position.z=25;
+function _0xB(){requestAnimationFrame(_0xB);const time=Date.now()*0.001;
+_0xL1.position.set(Math.cos(time)*15,Math.sin(time)*10,Math.sin(time)*15);
+_units.forEach(u=>{if(u.t>0){u.t--;return}u.el.position.add(u.v);u.cr.scale.setScalar(1+Math.sin(time*5)*0.2);
+u.arms.forEach((a,i)=>{a.rotation.x=Math.sin(time*2+i)*0.5;a.position.y=Math.sin(time+i)*0.2});
+if(u.el.position.length()>40)u.v.negate();
+_units.forEach(o=>{if(u===o||o.t>0)return;if(u.el.position.distanceTo(o.el.position)<4){
+u.t=o.t=120;u.v.negate();o.v.negate();document.getElementById('st').innerText="Inter-Link";
+setTimeout(()=>{document.getElementById('st').innerText="Deep Sync"},2000)}})});_0x4.render(_0x2,_0x3)} _0xB()})()</script></body></html>
