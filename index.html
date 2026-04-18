@@ -1,1 +1,35 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>3D World</title><style>body{margin:0;overflow:hidden;background-color:#87CEEB}canvas{display:block}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script></head><body><script>(function(){const _0x1=THREE;const _0x2=new _0x1.Scene();_0x2.background=new _0x1.Color(0x87CEEB);const _0x3=new _0x1.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);_0x3.position.set(0,5,10);_0x3.lookAt(0,0,0);const _0x4=new _0x1.WebGLRenderer({antialias:true});_0x4.setSize(window.innerWidth,window.innerHeight);_0x4.shadowMap.enabled=true;document.body.appendChild(_0x4.domElement);_0x2.add(new _0x1.AmbientLight(0x404040,1));const _0x5=new _0x1.DirectionalLight(0xffffff,1);_0x5.position.set(10,20,10);_0x5.castShadow=true;_0x2.add(_0x5);const _0x6=new _0x1.Mesh(new _0x1.PlaneGeometry(50,50),new _0x1.MeshStandardMaterial({color:0x228B22}));_0x6.rotation.x=-Math.PI/2;_0x6.receiveShadow=true;_0x2.add(_0x6);const _0x7=new _0x1.Mesh(new _0x1.BoxGeometry(1,2,1),new _0x1.MeshStandardMaterial({color:0xff0000}));_0x7.position.set(-5,1,0);_0x7.castShadow=true;_0x2.add(_0x7);const _0x8=new _0x1.Mesh(new _0x1.CylinderGeometry(0.5,0.5,1,8),new _0x1.MeshStandardMaterial({color:0x00ff00}));_0x8.position.set(5,0.5,0);_0x8.castShadow=true;_0x2.add(_0x8);let _0x9=true,_0xa=false,_0xb=1;const _0xc=0.05;function _0xd(){requestAnimationFrame(_0xd);if(_0x9){_0x7.position.x+=_0xc*_0xb;if(_0x7.position.x>4){_0xb=-1;_0x9=false;_0xa=true}else if(_0x7.position.x<-6){_0xb=1;_0x9=false;_0xa=true}}if(_0xa){_0x7.rotation.y+=0.1;if(Math.abs(_0x7.position.x-_0x8.position.x)<1.5){_0x8.material.color.setHex(0x00ff00);if(!window._tm){window._tm=setTimeout(()=>{_0xa=false;_0x9=true;_0x7.rotation.y=0;window._tm=null},1000)}}} _0x4.render(_0x2,_0x3)}window.addEventListener('resize',()=>{_0x3.aspect=window.innerWidth/window.innerHeight;_0x3.updateProjectionMatrix();_0x4.setSize(window.innerWidth,window.innerHeight)});_0xd()})()</script></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>3D Endless World</title>
+<style>body{margin:0;overflow:hidden;background:#020205}canvas{display:block}</style>
+<script src="https://cloudflare.com"></script></head><body>
+<script>(function(){const _0x1=THREE;const _0x2=new _0x1.Scene();_0x2.background=new _0x1.Color(0x020205);
+const _0x3=new _0x1.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);_0x3.position.set(0,10,15);_0x3.lookAt(0,0,0);
+const _0x4=new _0x1.WebGLRenderer({antialias:true});_0x4.setSize(window.innerWidth,window.innerHeight);_0x4.shadowMap.enabled=true;document.body.appendChild(_0x4.domElement);
+_0x2.add(new _0x1.AmbientLight(0x404040,1.5));const _0x5=new _0x1.DirectionalLight(0xffffff,1.2);_0x5.position.set(10,20,10);_0x5.castShadow=true;_0x2.add(_0x5);
+const _0x6=new _0x1.GridHelper(200,50,0x00ffff,0x050508);_0x2.add(_0x6);
+const _0xG=new _0x1.Group();const _0x7=new _0x1.Mesh(new _0x1.BoxGeometry(1.2,1.5,0.8),new _0x1.MeshStandardMaterial({color:0x444444}));
+const _0xH=new _0x1.Mesh(new _0x1.BoxGeometry(0.8,0.6,0.6),new _0x1.MeshStandardMaterial({color:0x333333}));_0xH.position.y=1.1;
+const _0xV=new _0x1.Mesh(new _0x1.BoxGeometry(0.6,0.15,0.1),new _0x1.MeshStandardMaterial({color:0x00ffff,emissive:0x00ffff}));_0xV.position.set(0,1.1,0.3);
+const _0xAL=new _0x1.Mesh(new _0x1.BoxGeometry(0.2,0.8,0.2),new _0x1.MeshStandardMaterial({color:0x222222}));_0xAL.position.set(-0.7,0.3,0);
+const _0xAR=new _0x1.Mesh(new _0x1.BoxGeometry(0.2,0.8,0.2),new _0x1.MeshStandardMaterial({color:0x222222}));_0xAR.position.set(0.7,0.3,0);
+_0xG.add(_0x7,_0xH,_0xV,_0xAL,_0xAR);_0xG.position.set(0,0.75,0);_0xG.traverse(c=>c.castShadow=true);_0x2.add(_0xG);
+const _infObjs=[];const _geom=[new _0x1.OctahedronGeometry(0.5),new _0x1.TetrahedronGeometry(0.5),new _0x1.BoxGeometry(0.4,0.4,0.4)];
+function _spawn(){
+const _m=new _0x1.Mesh(_geom[Math.floor(Math.random()*_geom.length)],new _0x1.MeshStandardMaterial({color:Math.random()*0xffffff,emissive:0x111111}));
+_m.position.set((Math.random()-0.5)*100,Math.random()*20,(Math.random()-0.5)*100);
+_m.vRot=Math.random()*0.02;_0x2.add(_m);_infObjs.push(_m);
+}
+for(let i=0;i<100;i++)_spawn();
+function _anim(){
+requestAnimationFrame(_anim);
+const _t=Date.now()*0.001;
+_0xG.position.y=0.75+Math.sin(_t*2)*0.2;
+_0xAL.rotation.z=Math.sin(_t*3)*0.5;_0xAR.rotation.z=-Math.sin(_t*3)*0.5;
+_infObjs.forEach(o=>{
+o.rotation.y+=o.vRot;o.position.z+=0.1;
+if(o.position.z>50)o.position.z=-50;
+});
+_0x6.position.z=(_0x6.position.z+0.1)%4;
+_0x4.render(_0x2,_0x3);
+}
+window.addEventListener('resize',()=>{_0x3.aspect=window.innerWidth/window.innerHeight;_0x3.updateProjectionMatrix();_0x4.setSize(window.innerWidth,window.innerHeight)});
+_anim();})()</script></body></html>
